@@ -351,8 +351,8 @@ if ( typeof Function.prototype.bind != 'function' ) {
         car,
         lastNum,
         timing,
-        allCars = ['+', '-', '*', '/', '/', '/', '*'],
-        limit = ['/', '*'],
+        allCars = ['*', '/', '/', '+', '/', '*', '+', '-', '*', '+', '-'],
+        limit = ['*'],
         $firstNum = $('#firstNum'),
         $lastNum = $('#lastNum'),
         $car = $('#car'),
@@ -365,16 +365,38 @@ if ( typeof Function.prototype.bind != 'function' ) {
         timer = null,
         correctAns = null;
 
+
+    function peeperMath() {
+        car = allCars[getRandom(allCars.length - 1)];
+
+
+        switch (car) {
+
+            case '*':
+                firstNum = getRandom(12);
+                lastNum = getRandom(12);
+                break;
+
+            case '/':
+                var num = [getRandom(12), getRandom(12)];
+                var total = num[0] * num[1];
+                firstNum = total;
+                lastNum = num[getRandom(1)];
+                break;
+
+            default :
+                firstNum = getRandom(100);
+                lastNum = getRandom(100);
+                break;
+
+        }
+
+    }
+
     function setMath() {
         $ans.val(null).focus();
-        car = allCars[getRandom(allCars.length - 1)];
-        var max = ($.inArray(car, limit) != -1) ? 12 : 100;
-        firstNum = getRandom(max);
-        lastNum = getRandom(max);
+        peeperMath();
 
-        if(checkBefore()) {
-            return setMath();
-        }
 
         $firstNum.text(firstNum);
         $lastNum.text(lastNum);
