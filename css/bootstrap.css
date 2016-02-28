@@ -3982,6 +3982,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li {
   position: relative;
   display: block;
+  float: left;
 }
 .nav > li > a {
   position: relative;
@@ -4182,6 +4183,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     float: left;
   }
 }
+
+.navbar-header {
+  float: left;
+}
+
 .navbar-collapse {
   padding-right: 15px;
   padding-left: 15px;
@@ -4324,11 +4330,12 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-nav {
-  margin: 7.5px -15px;
+  float: left;
+  margin: 0;
 }
 .navbar-nav > li > a {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   line-height: 20px;
 }
 @media (max-width: 767px) {

@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col-lg-12 text-center">
+        <div class="jumbotron">
+            <form class="form-inline" onsubmit="return false;" autocomplete="off">
+                <h4 id="timing" class="timing" style="margin-top: -25px;margin-bottom: 40px;">
+                    <clock start="vm.startClock" lap="vm.clockLap" restart="vm.clockRestart" stop="vm.clockStop"></clock>
+                </h4>
+                <h1>
+                    <span id="firstNum">{{ vm.firstNum }}</span>
+                    <span id="car">{{ vm.operator }}</span>
+                    <span id="lastNum">{{ vm.lastNum }}</span>
+                    <span>=</span>
+                    <span id="field">
+                        <input class="form-control input-lg"
+                               ng-model="vm.userAnswer"
+                               input-focus="vm.focusInput"
+                               auto-check="vm.onSubmit"
+                               ng-disabled="!vm.sessionStarts"
+                               type="number"
+                               autocomplete="off">
+                    </span>
+                </h1>
+            </form>
+            <p>
+                <button ng-disabled="!vm.sessionStarts" ng-click="vm.skip()" class="btn btn-danger btn-lg" role="button">SKIP</button>
+            </p>
+            <alert show="vm.showAlert"></alert>
+            <div class="footer text-right" style="margin-bottom: -20px;">
+                <button class="btn btn-danger" ng-show="vm.sessionStarts" ng-click="vm.stopSession()">Stop Session</button>
+                <button class="btn btn-primary" ng-show="!vm.sessionStarts" ng-click="vm.startSession()">Start Session</button>
+            </div>
+        </div>
+        <div class="panel panel-default text-left">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h3>STATISTICS:</h3>
+                    </div>
+                    <div class="skips text-left col-sm-3 col-xs-4">
+                        <span class="text-label">Skips:</span>
+                        <span id="skips">{{ vm.statistics.skips }}</span>
+                    </div>
+                    <div class="pass text-left col-sm-3 col-xs-4">
+                        <span class="text-label">Passes:</span>
+                        <span id="pass">{{ vm.statistics.passes }}</span>
+                    </div>
+                    <div class="fail text-left col-sm-3 col-xs-4">
+                        <span class="text-label">fails:</span>
+                        <span id="fail">{{ vm.statistics.fails }}</span>
+                    </div>
+                    <div class="total text-left col-sm-3 col-xs-12">
+                        <span class="text-label">Total:</span>
+                        <span id="total">{{ vm.statistics.total }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+<div class="row">
+    <div class="col-lg-12">
+
+        <h1 class="page-header">
+            Session:
+            <small>{{ vm.session.id | date:'medium' }}</small>
+        </h1>
+
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Exercise</th>
+                        <th>Your Answer</th>
+                        <th>The Answer</th>
+                        <th>Pass</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="exercise in vm.session.exercises">
+                        <th scope="row">{{ $index + 1 }}</th>
+                        <td>{{ vm.formatExercise(exercise.exercise) }}</td>
+                        <td>{{ exercise.reason == 'skips' ? 'skips' : exercise.userAnswer }}</td>
+                        <td>{{ vm.checkAns(exercise.exercise) }}</td>
+                        <td>{{ exercise.pass ? 'Yes' : 'No' }}</td>
+                        <td>{{ exercise.time }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="panel">
+            <div class="page-header">
+                <h3>STATISTICS:</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="skips text-left col-sm-3 col-xs-4">
+                        <span class="text-label">Skips:</span>
+                        <span id="skips">{{ vm.statistics.skips }}</span>
+                    </div>
+                    <div class="pass text-left col-sm-3 col-xs-4">
+                        <span class="text-label">Passes:</span>
+                        <span id="pass">{{ vm.statistics.passes }}</span>
+                    </div>
+                    <div class="fail text-left col-sm-3 col-xs-4">
+                        <span class="text-label">fails:</span>
+                        <span id="fail">{{ vm.statistics.fails }}</span>
+                    </div>
+                    <div class="total text-left col-sm-3 col-xs-12">
+                        <span class="text-label">Total:</span>
+                        <span id="total">{{ vm.statistics.total }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
